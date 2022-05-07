@@ -91,12 +91,20 @@ const keyboard = {
         row: '1',
     },
     Backspace: {
-        name: '&larr;',
+        // name: '&larr;',
+        meaning: {
+            EN: ['&larr;', '&larr;'],
+            RU: ['&larr;', '&larr;'],
+        },
         activity: (value, position) => value.slice(0, position - 1) + value.slice(position),
         row: '1',
     },
     Tab: {
-        name: 'Tab',
+        // name: 'Tab',
+        meaning: {
+            EN: ['Tab', 'Tab'],
+            RU: ['Tab', 'Tab'],
+        },
         activity: (value) => `${value}\t`,
         row: '2',
     },
@@ -192,12 +200,20 @@ const keyboard = {
         row: '2',
     },
     Delete: {
-        name: 'Delete',
+        // name: 'Delete',
+        meaning: {
+            EN: ['Delete', 'Delete'],
+            RU: ['Delete', 'Delete'],
+        },
         activity: (value, nextPosition) => (nextPosition ? value.slice(0, nextPosition) + value.slice(nextPosition + 1) : value),
         row: '2',
     },
     CapsLock: {
-        name: 'CapsLock',
+        // name: 'CapsLock',
+        meaning: {
+            EN: ['CapsLock', 'CapsLock'],
+            RU: ['CapsLock', 'CapsLock'],
+        },
         row: '3',
     },
     KeyA: {
@@ -278,12 +294,20 @@ const keyboard = {
         row: '3',
     },
     Enter: {
-        name: '&crarr;',
+        // name: '&crarr;',
+        meaning: {
+            EN: ['&crarr;', '&crarr;'],
+            RU: ['&crarr;', '&crarr;'],
+        },
         activity: (value, position) => `${value.slice(0, position)}\r\n${value.slice(position + 1)}`,
         row: '3',
     },
     ShiftLeft: {
-        name: '&uarr;',
+        // name: '&uarr;',
+        meaning: {
+            EN: ['&uarr;', '&uarr;'],
+            RU: ['&uarr;', '&uarr;'],
+        },
         //   activity: (value, position) => value.slice(0, curretPos) + value.slice(curretPos + 1),
         row: '4',
     },
@@ -358,57 +382,101 @@ const keyboard = {
         row: '4',
     },
     ShiftRight: {
-        name: '&uarr;',
+        // name: '&uarr;',
+        meaning: {
+            EN: ['&uarr;', '&uarr;'],
+            RU: ['&uarr;', '&uarr;'],
+        },
         //   activity: (value, curretPos) => value.slice(0, curretPos) + value.slice(curretPos + 1),
         row: '4',
     },
     ControlLeft: {
-        name: 'Ctrl',
+        // name: 'Ctrl',
+        meaning: {
+            EN: ['Ctrl', 'Ctrl'],
+            RU: ['Ctrl', 'Ctrl'],
+        },
         //   activity: (value, curretPos) => value.slice(0, curretPos) + value.slice(curretPos + 1),
         row: '5',
     },
     MetaLeft: {
-        name: 'Win',
+        // name: 'Win',
+        meaning: {
+            EN: ['Win', 'Win'],
+            RU: ['Win', 'Win'],
+        },
         // activity: (value, curretPos) => value.slice(0, curretPos) + value.slice(curretPos + 1),
         row: '5',
     },
     AltLeft: {
-        name: 'Alt',
+        // name: 'Alt',
+        meaning: {
+            EN: ['Alt', 'Alt'],
+            RU: ['Alt', 'Alt'],
+        },
         // activity: (value, curretPos) => value.slice(0, curretPos) + value.slice(curretPos + 1),
         row: '5',
     },
     Space: {
-        name: 'Space',
+        // name: 'Space',
+        meaning: {
+            EN: ['Space', 'Space'],
+            RU: ['Space', 'Space'],
+        },
         activity: (value, position) => `${value.slice(0, position)} ${value.slice(position + 1)}`,
         row: '5',
     },
     AltRight: {
-        name: 'Alt',
+        // name: 'Alt',
+        meaning: {
+            EN: ['Alt', 'Alt'],
+            RU: ['Alt', 'Alt'],
+        },
         // activity: (value, curretPos) => value.slice(0, curretPos) + value.slice(curretPos + 1),
         row: '5',
     },
     ControlRight: {
-        name: 'Ctrl',
+        // name: 'Ctrl',
+        meaning: {
+            EN: ['Ctrl', 'Ctrl'],
+            RU: ['Ctrl', 'Ctrl'],
+        },
         //   activity: (value, curretPos) => value.slice(0, curretPos) + value.slice(curretPos + 1),
         row: '5',
     },
     ArrowUp: {
-        name: '&#5123;',
+        // name: '&#5123;',
+        meaning: {
+            EN: ['&#5123;', '&#5123;'],
+            RU: ['&#5123;', '&#5123;'],
+        },
         activity: (value, position) => `${value.slice(0, position)}&#5123;${value.slice(position + 1)}`,
         row: '5',
     },
     ArrowLeft: {
-        name: '&#5130;',
+        // name: '&#5130;',
+        meaning: {
+            EN: ['&#5130;', '&#5130;'],
+            RU: ['&#5130;', '&#5130;'],
+        },
         activity: (value, position) => `${value.slice(0, position)}&#5130;${value.slice(position + 1)}`,
         row: '5',
     },
     ArrowDown: {
-        name: '&#5121;',
+        // name: '&#5121;',
+        meaning: {
+            EN: ['&#5121;', '&#5121;'],
+            RU: ['&#5121;', '&#5121;'],
+        },
         activity: (value, position) => `${value.slice(0, position)}&#5121;${value.slice(position + 1)}`,
         row: '5',
     },
     ArrowRight: {
-      name: '&#5125;',
+    //   name: '&#5125;',
+      meaning: {
+        EN: ['&#5125;', '&#5125;'],
+        RU: ['&#5125;', '&#5125;'],
+    },
       activity: (value, position) => `${value.slice(0, position)}&#5125;${value.slice(position + 1)}`,
       row: '5',
     },
