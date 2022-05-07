@@ -1,4 +1,7 @@
 import keyboard from './keyboard.js';
+let keyboardArr = Object.entries(keyboard);
+console.log(keyboardArr);
+let language = "EN";
 
 function setLocalStorage() {
     localStorage.setItem('language', language);
@@ -7,8 +10,6 @@ window.addEventListener('beforeunload', setLocalStorage);
 
 
 function drawKeyboardField() {
-    let elInRow = [14, 15, 13, 12, 10];
-    let rowI = 0;
 
     const body = document.querySelector('body');
     body.insertAdjacentHTML('afterbegin', '<div id="container"></div>');
@@ -80,20 +81,27 @@ function drawKeyboardField() {
         }
     }
     const rows = document.querySelectorAll('.row');
+    const buttons = document.querySelectorAll('.btn');
+    const letterButtons = document.querySelectorAll('.letter_btn');
+    console.log(letterButtons)
+    for (let i = 0; i < buttons.length; i++) {
+        buttons[i].insertAdjacentText('beforeend', `${keyboardArr[i][1].meaning[`${language}`][0]}`)
+    }
+    letterButtons.forEach(b => b.textContent = b.textContent.toUpperCase())
 }
 
 
 window.onload = function() {
 
     drawKeyboardField();
-    getLocalStorage();
-    
-    function getLocalStorage() {
-        if(localStorage.getItem('language')) {
-          const lang = localStorage.getItem('language');
-          toggleLanguage(lang);
-        }
-    }
+    // getLocalStorage();
+
+    // function getLocalStorage() {
+    //     if(localStorage.getItem('language')) {
+    //       const lang = localStorage.getItem('language');
+    //       toggleLanguage(lang);
+    //     }
+    // }
 
     
 }
