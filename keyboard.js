@@ -93,8 +93,8 @@ const keyboard = {
     Backspace: {
         // name: '&larr;',
         meaning: {
-            EN: ['&larr;', '&larr;'],
-            RU: ['&larr;', '&larr;'],
+            EN: ['🠔', '🠔'],
+            RU: ['🠔', '🠔'],
         },
         activity: (value, position) => value.slice(0, position - 1) + value.slice(position),
         row: '1',
