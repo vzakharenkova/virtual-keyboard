@@ -16,7 +16,7 @@ function drawKeyboardField() {
 
     const container = document.querySelector('#container');
     container.insertAdjacentHTML('beforeend', '<h1 id="heading">Виртуальная клавиатура</h1>');
-    container.insertAdjacentHTML('beforeend', '<input id="input" type="textarea"/>');
+    container.insertAdjacentHTML('beforeend', '<textarea id="textarea"/>');
     container.insertAdjacentHTML('beforeend', '<div id="keyboard_container"></div>');
     container.insertAdjacentHTML('beforeend', '<div id="additional_info"><div>Клавиатура создана в операционной системе Windows<div/><div>Для переключения языка комбинация: левыe ctrl + shift<div/></div>');
 
