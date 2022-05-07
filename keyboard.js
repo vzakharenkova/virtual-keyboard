@@ -296,8 +296,8 @@ const keyboard = {
     Enter: {
         // name: '&crarr;',
         meaning: {
-            EN: ['&crarr;', '&crarr;'],
-            RU: ['&crarr;', '&crarr;'],
+            EN: ['↵', '↵'],
+            RU: ['↵', '↵'],
         },
         activity: (value, position) => `${value.slice(0, position)}\r\n${value.slice(position + 1)}`,
         row: '3',
@@ -305,8 +305,8 @@ const keyboard = {
     ShiftLeft: {
         // name: '&uarr;',
         meaning: {
-            EN: ['&uarr;', '&uarr;'],
-            RU: ['&uarr;', '&uarr;'],
+            EN: ['🠩', '🠩'],
+            RU: ['🠩', '🠩'],
         },
         //   activity: (value, position) => value.slice(0, curretPos) + value.slice(curretPos + 1),
         row: '4',
@@ -384,8 +384,8 @@ const keyboard = {
     ShiftRight: {
         // name: '&uarr;',
         meaning: {
-            EN: ['&uarr;', '&uarr;'],
-            RU: ['&uarr;', '&uarr;'],
+            EN: ['🠩', '🠩'],
+            RU: ['🠩', '🠩'],
         },
         //   activity: (value, curretPos) => value.slice(0, curretPos) + value.slice(curretPos + 1),
         row: '4',
@@ -447,8 +447,8 @@ const keyboard = {
     ArrowUp: {
         // name: '&#5123;',
         meaning: {
-            EN: ['&#5123;', '&#5123;'],
-            RU: ['&#5123;', '&#5123;'],
+            EN: ['▲', '▲'],
+            RU: ['▲', '▲'],
         },
         activity: (value, position) => `${value.slice(0, position)}&#5123;${value.slice(position + 1)}`,
         row: '5',
@@ -456,8 +456,8 @@ const keyboard = {
     ArrowLeft: {
         // name: '&#5130;',
         meaning: {
-            EN: ['&#5130;', '&#5130;'],
-            RU: ['&#5130;', '&#5130;'],
+            EN: ['◀', '◀'],
+            RU: ['◀', '◀'],
         },
         activity: (value, position) => `${value.slice(0, position)}&#5130;${value.slice(position + 1)}`,
         row: '5',
@@ -465,8 +465,8 @@ const keyboard = {
     ArrowDown: {
         // name: '&#5121;',
         meaning: {
-            EN: ['&#5121;', '&#5121;'],
-            RU: ['&#5121;', '&#5121;'],
+            EN: ['▼', '▼'],
+            RU: ['▼', '▼'],
         },
         activity: (value, position) => `${value.slice(0, position)}&#5121;${value.slice(position + 1)}`,
         row: '5',
@@ -474,8 +474,8 @@ const keyboard = {
     ArrowRight: {
     //   name: '&#5125;',
       meaning: {
-        EN: ['&#5125;', '&#5125;'],
-        RU: ['&#5125;', '&#5125;'],
+        EN: ['▶', '▶'],
+        RU: ['▶', '▶'],
     },
       activity: (value, position) => `${value.slice(0, position)}&#5125;${value.slice(position + 1)}`,
       row: '5',
