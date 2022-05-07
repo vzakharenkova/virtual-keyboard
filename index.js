@@ -1,5 +1,9 @@
 import keyboard from './keyboard.js';
 
+function setLocalStorage() {
+    localStorage.setItem('language', language);
+}
+window.addEventListener('beforeunload', setLocalStorage);
 
 
 function drawKeyboardField() {
@@ -80,5 +84,16 @@ function drawKeyboardField() {
 
 
 window.onload = function() {
+
     drawKeyboardField();
+    getLocalStorage();
+    
+    function getLocalStorage() {
+        if(localStorage.getItem('language')) {
+          const lang = localStorage.getItem('language');
+          toggleLanguage(lang);
+        }
+    }
+
+    
 }
