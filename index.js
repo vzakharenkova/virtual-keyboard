@@ -89,7 +89,7 @@ function drawKeyboardField() {
     const letterButtons = document.querySelectorAll('.letter_btn');
     console.log(letterButtons)
     for (let i = 0; i < buttons.length; i++) {
-        buttons[i].insertAdjacentText('beforeend', `${keyboardArr[i][1].meaning[`${language}`][0]}`)
+        buttons[i].insertAdjacentText('beforeend', `${keyboardArr[i][1].meaning[`${localStorage.language}`][0]}`)
     }
 }
 
@@ -100,9 +100,9 @@ function drawKeyboardField() {
 
 
 window.onload = function() {
-
+    getLocalStorage();
     drawKeyboardField();
-    // getLocalStorage();
+    
 
     const rows = document.querySelectorAll('.row');
     const buttons = document.querySelectorAll('.btn');
@@ -226,12 +226,8 @@ window.onload = function() {
 
     }
 
-    // function getLocalStorage() {
-    //     if(localStorage.getItem('language')) {
-    //       const lang = localStorage.getItem('language');
-    //       toggleLanguage(lang);
-    //     }
-    // }
-    
-    
+    function getLocalStorage() {
+        localStorage.getItem('language');
+        language = localStorage.language;
+    } 
 }

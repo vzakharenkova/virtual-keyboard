@@ -294,7 +294,7 @@ const keyboard = {
             EN: ['↵', '↵'],
             RU: ['↵', '↵'],
         },
-        activity: (value, position) => `${value.slice(0, position)}\r\n${value.slice(position + 1)}`,
+        activity: (value, position) => `${value.slice(0, position + 1)}\r\n${value.slice(position + 2)}`,
         row: '3',
     },
     ShiftLeft: {
