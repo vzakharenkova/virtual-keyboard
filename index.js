@@ -12,9 +12,6 @@ window.addEventListener('beforeunload', setLocalStorage);
 
 
 function drawKeyboardField() {
-    if (!localStorage.language) {
-        localStorage.language = 'EN';
-    }
 
     const body = document.querySelector('body');
     body.insertAdjacentHTML('afterbegin', '<div id="container"></div>');
@@ -89,7 +86,7 @@ function drawKeyboardField() {
     const letterButtons = document.querySelectorAll('.letter_btn');
     console.log(letterButtons)
     for (let i = 0; i < buttons.length; i++) {
-        buttons[i].insertAdjacentText('beforeend', `${keyboardArr[i][1].meaning[`${localStorage.language}`][0]}`)
+        buttons[i].insertAdjacentText('beforeend', `${keyboardArr[i][1].meaning[`${language}`][0]}`)
     }
 }
 
