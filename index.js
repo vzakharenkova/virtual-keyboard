@@ -1,7 +1,11 @@
 import keyboard from './keyboard.js';
 let keyboardArr = Object.entries(keyboard);
-console.log(keyboardArr);
+let keyboardValues = Object.values(keyboard);
+let keyboardKeys = Object.keys(keyboard);
+console.log(keyboardValues);
 let language = "EN";
+
+
 
 function setLocalStorage() {
     localStorage.setItem('language', language);
@@ -92,9 +96,7 @@ function drawKeyboardField() {
 
 
 
-// function toggleLanguage(lang) {
 
-// }
 
 
 window.onload = function() {
@@ -106,15 +108,57 @@ window.onload = function() {
     const buttons = document.querySelectorAll('.btn');
     const capsLock = rows[2].children[0];
     const shiftLeft = rows[3].children[0];
+    const ctrlLeft = rows[4].children[0];
     const letterButtons = document.querySelectorAll('.letter_btn');
     const digitButtons = document.querySelectorAll('.digit_btn');
     const symbolButtons = document.querySelectorAll('.symbol_btn');
+    const activityButtons = document.querySelectorAll('.activity_btn');
+    const arrowButtons = document.querySelectorAll('.arrow_btn');
     const textarea = document.querySelector('#textarea');
     capsLock.addEventListener('click', toggleCaps);
     shiftLeft.addEventListener('dblclick', toggleShift);
+    ctrlLeft.addEventListener('click', toggleLanguage);
     letterButtons.forEach(btn => btn.addEventListener('click', writeInTextarea));
     digitButtons.forEach(btn => btn.addEventListener('click', writeInTextarea));
     symbolButtons.forEach(btn => btn.addEventListener('click', writeInTextarea));
+    textarea.addEventListener('input', function updateValue(e) {
+        textarea.textContent = e.target.value;
+    })
+    activityButtons.forEach(btn => btn.addEventListener('click', activityInTextarea));
+    arrowButtons.forEach(btn => btn.addEventListener('click', activityInTextarea));
+
+
+    // KeyboardEvent.addEventListener ('keydown', function (event){
+    //     console.log (event);
+    // }); 
+    
+    
+    // buttons[13].addEventListener ('keydown', function(event) {
+    //     console.log(event)
+    // })
+    // buttons[13].addEventListener ('click', function() {
+    //     let evt = new KeyboardEvent('keydown', {"code": 'Backslash'});
+    // buttons[13].dispatchEvent(evt);
+    // })
+    
+
+    function toggleLanguage() {
+        ctrlLeft.classList.toggle('selected');
+        if (language === 'EN') {
+            language = 'RU';
+        } else language = 'EN';
+        if (shiftLeft.classList.contains('selected')) {
+            for (let i = 0; i < buttons.length; i++) {
+                buttons[i].textContent = `${keyboardArr[i][1].meaning[`${language}`][0]}`;
+            }
+    
+        }
+ 
+        
+        ctrlLeft.classList.toggle('selected');
+        shiftLeft.classList.toggle('selected');
+    }
+    
 
     function toggleCaps (event) {
         capsLock.classList.toggle('selected');
@@ -161,6 +205,25 @@ window.onload = function() {
 
     function writeInTextarea(e) {
         textarea.textContent += e.target.textContent;
+    }
+
+    function activityInTextarea(e) {
+        let n = 0;
+        console.log( Selection.selectionStart)
+        for (let i = 0; i < buttons.length; i++) {
+            if (buttons[i].outerHTML == e.target.outerHTML) {
+                n = i;
+                console.log(e.target);
+                textarea.textContent = keyboardValues[i].activity(textarea.textContent, Selection.selectionStart - 1);
+                break; 
+            }
+             
+        }
+        let value = textarea.textContent;
+        let position = textarea.textContent.length-1;
+        textarea.textContent = keyboardValues[n].activity(value, position);
+        
+
     }
 
     // function getLocalStorage() {
