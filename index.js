@@ -106,9 +106,15 @@ window.onload = function() {
     const buttons = document.querySelectorAll('.btn');
     const capsLock = rows[2].children[0];
     const shiftLeft = rows[3].children[0];
+    const letterButtons = document.querySelectorAll('.letter_btn');
+    const digitButtons = document.querySelectorAll('.digit_btn');
+    const symbolButtons = document.querySelectorAll('.symbol_btn');
+    const textarea = document.querySelector('#textarea');
     capsLock.addEventListener('click', toggleCaps);
     shiftLeft.addEventListener('dblclick', toggleShift);
-    const letterButtons = document.querySelectorAll('.letter_btn');
+    letterButtons.forEach(btn => btn.addEventListener('click', writeInTextarea));
+    digitButtons.forEach(btn => btn.addEventListener('click', writeInTextarea));
+    symbolButtons.forEach(btn => btn.addEventListener('click', writeInTextarea));
 
     function toggleCaps (event) {
         capsLock.classList.toggle('selected');
@@ -153,6 +159,9 @@ window.onload = function() {
         }
     }
 
+    function writeInTextarea(e) {
+        textarea.textContent += e.target.textContent;
+    }
 
     // function getLocalStorage() {
     //     if(localStorage.getItem('language')) {
