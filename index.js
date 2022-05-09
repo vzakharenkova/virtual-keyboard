@@ -12,8 +12,11 @@ window.addEventListener('beforeunload', setLocalStorage);
 
 
 function drawKeyboardField() {
-
-    let language = "EN";
+    let language;
+    if (!localStorage.language) {
+        language = "EN";
+    } else language = localStorage.language;
+    
     const body = document.querySelector('body');
     body.insertAdjacentHTML('afterbegin', '<div id="container"></div>');
 
