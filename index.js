@@ -87,8 +87,14 @@ function drawKeyboardField() {
     for (let i = 0; i < buttons.length; i++) {
         buttons[i].insertAdjacentText('beforeend', `${keyboardArr[i][1].meaning[`${language}`][0]}`)
     }
-    letterButtons.forEach(b => b.textContent = b.textContent.toUpperCase())
 }
+
+
+
+
+// function toggleLanguage(lang) {
+
+// }
 
 
 window.onload = function() {
@@ -96,12 +102,25 @@ window.onload = function() {
     drawKeyboardField();
     // getLocalStorage();
 
+    const rows = document.querySelectorAll('.row');
+    rows[2].children[0].addEventListener('click', toggleCaps);
+    const letterButtons = document.querySelectorAll('.letter_btn');
+
+    function toggleCaps (event) {
+        rows[2].children[0].classList.toggle('selected');
+        if (event.getModifierState("CapsLock") || rows[2].children[0].classList.contains('selected')) {
+            letterButtons.forEach(b => b.textContent = b.textContent.toUpperCase())
+        } else {
+            letterButtons.forEach(b => b.textContent = b.textContent.toLowerCase())
+        }
+    }
+
     // function getLocalStorage() {
     //     if(localStorage.getItem('language')) {
     //       const lang = localStorage.getItem('language');
     //       toggleLanguage(lang);
     //     }
     // }
-
+    
     
 }
