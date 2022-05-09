@@ -13,7 +13,7 @@ window.addEventListener('beforeunload', setLocalStorage);
 
 function drawKeyboardField() {
     if (!localStorage.language) {
-        language = 'EN';
+        localStorage.language = 'EN';
     }
 
     const body = document.querySelector('body');
