@@ -13,6 +13,7 @@ window.addEventListener('beforeunload', setLocalStorage);
 
 function drawKeyboardField() {
 
+    let language = "EN";
     const body = document.querySelector('body');
     body.insertAdjacentHTML('afterbegin', '<div id="container"></div>');
 
