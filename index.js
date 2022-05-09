@@ -1,8 +1,6 @@
 import keyboard from './keyboard.js';
 let keyboardArr = Object.entries(keyboard);
 let keyboardValues = Object.values(keyboard);
-let keyboardKeys = Object.keys(keyboard);
-console.log(keyboardValues);
 let language = "EN";
 
 
@@ -87,7 +85,6 @@ function drawKeyboardField() {
                 break;
         }
     }
-    const rows = document.querySelectorAll('.row');
     const buttons = document.querySelectorAll('.btn');
     const letterButtons = document.querySelectorAll('.letter_btn');
     console.log(letterButtons)
@@ -130,19 +127,6 @@ window.onload = function() {
     activityButtons.forEach(btn => btn.addEventListener('click', activityInTextarea));
     arrowButtons.forEach(btn => btn.addEventListener('click', activityInTextarea));
 
-
-    // KeyboardEvent.addEventListener ('keydown', function (event){
-    //     console.log (event);
-    // }); 
-    
-    
-    // buttons[13].addEventListener ('keydown', function(event) {
-    //     console.log(event)
-    // })
-    // buttons[13].addEventListener ('click', function() {
-    //     let evt = new KeyboardEvent('keydown', {"code": 'Backslash'});
-    // buttons[13].dispatchEvent(evt);
-    // })
     
 
     function toggleLanguage() {
@@ -212,7 +196,6 @@ window.onload = function() {
 
     function activityInTextarea(e) {
         let n = 0;
-        console.log( Selection.selectionStart)
         for (let i = 0; i < buttons.length; i++) {
             if (buttons[i].outerHTML == e.target.outerHTML) {
                 n = i;

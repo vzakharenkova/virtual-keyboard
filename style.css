@@ -84,9 +84,6 @@ body {
     line-height: 8vh;
     cursor: pointer;
 }
-/* .row:not(:first-child):not(:last-child) .activity_btn {
-    width: 15vh;
-} */
 .row:first-child .activity_btn{
     width: 25.5vh;
 }
