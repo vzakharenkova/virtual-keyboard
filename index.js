@@ -112,7 +112,11 @@ window.onload = function() {
 
     function toggleCaps (event) {
         capsLock.classList.toggle('selected');
-        if (event.getModifierState("CapsLock") || capsLock.classList.contains('selected')) {
+        if ((event.getModifierState("CapsLock") || capsLock.classList.contains('selected')) && !shiftLeft.classList.contains('selected')) {
+            letterButtons.forEach(b => b.textContent = b.textContent.toUpperCase())
+        } else if ((event.getModifierState("CapsLock") || capsLock.classList.contains('selected')) && shiftLeft.classList.contains('selected')) {
+            letterButtons.forEach(b => b.textContent = b.textContent.toLowerCase())
+        } else if ((!event.getModifierState("CapsLock") || !capsLock.classList.contains('selected')) && shiftLeft.classList.contains('selected')) {
             letterButtons.forEach(b => b.textContent = b.textContent.toUpperCase())
         } else {
             letterButtons.forEach(b => b.textContent = b.textContent.toLowerCase())
