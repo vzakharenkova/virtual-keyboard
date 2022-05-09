@@ -12,8 +12,8 @@ window.addEventListener('beforeunload', setLocalStorage);
 
 
 function drawKeyboardField() {
-    let language;
-    if (!localStorage.language) {
+    let language = 'EN';
+    if (localStorage.language === undefined) {
         language = "EN";
     } else language = localStorage.language;
     
