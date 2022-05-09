@@ -412,7 +412,7 @@ const keyboard = {
             EN: ['Space', 'Space'],
             RU: ['Space', 'Space'],
         },
-        activity: (value, position) => `${value.slice(0, position)} ${value.slice(position + 1)}`,
+        activity: (value, position) => `${value.slice(0, position+1)} ${value.slice(position + 1)}`,
         row: '5',
     },
     AltRight: {
