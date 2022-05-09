@@ -103,17 +103,23 @@ window.onload = function() {
     // getLocalStorage();
 
     const rows = document.querySelectorAll('.row');
-    rows[2].children[0].addEventListener('click', toggleCaps);
+    const capsLock = rows[2].children[0];
+    capsLock.addEventListener('click', toggleCaps);
     const letterButtons = document.querySelectorAll('.letter_btn');
 
     function toggleCaps (event) {
-        rows[2].children[0].classList.toggle('selected');
+        capsLock.classList.toggle('selected');
         if (event.getModifierState("CapsLock") || rows[2].children[0].classList.contains('selected')) {
             letterButtons.forEach(b => b.textContent = b.textContent.toUpperCase())
         } else {
             letterButtons.forEach(b => b.textContent = b.textContent.toLowerCase())
         }
     }
+
+    // function toggleShift (event) {
+
+    // }
+
 
     // function getLocalStorage() {
     //     if(localStorage.getItem('language')) {
