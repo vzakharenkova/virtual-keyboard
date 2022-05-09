@@ -91,16 +91,14 @@ const keyboard = {
         row: '1',
     },
     Backspace: {
-        // name: '&larr;',
         meaning: {
             EN: ['🠔', '🠔'],
             RU: ['🠔', '🠔'],
         },
-        activity: (value, position) => value.slice(0, position - 1) + value.slice(position),
+        activity: (value, position) => value.slice(0, position) + value.slice(position + 1),
         row: '1',
     },
     Tab: {
-        // name: 'Tab',
         meaning: {
             EN: ['Tab', 'Tab'],
             RU: ['Tab', 'Tab'],
@@ -200,16 +198,14 @@ const keyboard = {
         row: '2',
     },
     Delete: {
-        // name: 'Delete',
         meaning: {
             EN: ['Delete', 'Delete'],
             RU: ['Delete', 'Delete'],
         },
-        activity: (value, nextPosition) => (nextPosition ? value.slice(0, nextPosition) + value.slice(nextPosition + 1) : value),
+        activity: (value, position) => (position + 1 ? value.slice(0, position + 1) + value.slice(position + 1 + 1) : value),
         row: '2',
     },
     CapsLock: {
-        // name: 'CapsLock',
         meaning: {
             EN: ['CapsLock', 'CapsLock'],
             RU: ['CapsLock', 'CapsLock'],
@@ -294,7 +290,6 @@ const keyboard = {
         row: '3',
     },
     Enter: {
-        // name: '&crarr;',
         meaning: {
             EN: ['↵', '↵'],
             RU: ['↵', '↵'],
@@ -303,12 +298,11 @@ const keyboard = {
         row: '3',
     },
     ShiftLeft: {
-        // name: '&uarr;',
         meaning: {
             EN: ['🠩', '🠩'],
             RU: ['🠩', '🠩'],
         },
-        //   activity: (value, position) => value.slice(0, curretPos) + value.slice(curretPos + 1),
+          activity: (value, position) => value.slice(0, position) + value.slice(position + 1),
         row: '4',
     },
     KeyZ: {
@@ -382,43 +376,38 @@ const keyboard = {
         row: '4',
     },
     ShiftRight: {
-        // name: '&uarr;',
         meaning: {
             EN: ['🠩', '🠩'],
             RU: ['🠩', '🠩'],
         },
-        //   activity: (value, curretPos) => value.slice(0, curretPos) + value.slice(curretPos + 1),
+          activity: (value, position) => value.slice(0, position) + value.slice(position + 1),
         row: '4',
     },
     ControlLeft: {
-        // name: 'Ctrl',
         meaning: {
             EN: ['Ctrl', 'Ctrl'],
             RU: ['Ctrl', 'Ctrl'],
         },
-        //   activity: (value, curretPos) => value.slice(0, curretPos) + value.slice(curretPos + 1),
+          activity: (value, position) => value.slice(0, position) + value.slice(position + 1),
         row: '5',
     },
     MetaLeft: {
-        // name: 'Win',
         meaning: {
             EN: ['Win', 'Win'],
             RU: ['Win', 'Win'],
         },
-        // activity: (value, curretPos) => value.slice(0, curretPos) + value.slice(curretPos + 1),
+        activity: (value, position) => value.slice(0, position) + value.slice(position + 1),
         row: '5',
     },
     AltLeft: {
-        // name: 'Alt',
         meaning: {
             EN: ['Alt', 'Alt'],
             RU: ['Alt', 'Alt'],
         },
-        // activity: (value, curretPos) => value.slice(0, curretPos) + value.slice(curretPos + 1),
+        activity: (value, position) => value.slice(0, position) + value.slice(position + 1),
         row: '5',
     },
     Space: {
-        // name: 'Space',
         meaning: {
             EN: ['Space', 'Space'],
             RU: ['Space', 'Space'],
@@ -427,57 +416,50 @@ const keyboard = {
         row: '5',
     },
     AltRight: {
-        // name: 'Alt',
         meaning: {
             EN: ['Alt', 'Alt'],
             RU: ['Alt', 'Alt'],
         },
-        // activity: (value, curretPos) => value.slice(0, curretPos) + value.slice(curretPos + 1),
         row: '5',
     },
     ControlRight: {
-        // name: 'Ctrl',
         meaning: {
             EN: ['Ctrl', 'Ctrl'],
             RU: ['Ctrl', 'Ctrl'],
         },
-        //   activity: (value, curretPos) => value.slice(0, curretPos) + value.slice(curretPos + 1),
+        activity: (value, position) => value.slice(0, position) + value.slice(position + 1),
         row: '5',
     },
     ArrowUp: {
-        // name: '&#5123;',
         meaning: {
             EN: ['▲', '▲'],
             RU: ['▲', '▲'],
         },
-        activity: (value, position) => `${value.slice(0, position)}&#5123;${value.slice(position + 1)}`,
+        activity: (value, position) => `${value.slice(0, position)}▲${value.slice(position + 1)}`,
         row: '5',
     },
     ArrowLeft: {
-        // name: '&#5130;',
         meaning: {
             EN: ['◀', '◀'],
             RU: ['◀', '◀'],
         },
-        activity: (value, position) => `${value.slice(0, position)}&#5130;${value.slice(position + 1)}`,
+        activity: (value, position) => `${value.slice(0, position)}◀${value.slice(position + 1)}`,
         row: '5',
     },
     ArrowDown: {
-        // name: '&#5121;',
         meaning: {
             EN: ['▼', '▼'],
             RU: ['▼', '▼'],
         },
-        activity: (value, position) => `${value.slice(0, position)}&#5121;${value.slice(position + 1)}`,
+        activity: (value, position) => `${value.slice(0, position)}▼${value.slice(position + 1)}`,
         row: '5',
     },
     ArrowRight: {
-    //   name: '&#5125;',
       meaning: {
         EN: ['▶', '▶'],
         RU: ['▶', '▶'],
     },
-      activity: (value, position) => `${value.slice(0, position)}&#5125;${value.slice(position + 1)}`,
+      activity: (value, position) => `${value.slice(0, position)}▶${value.slice(position + 1)}`,
       row: '5',
     },
   };
