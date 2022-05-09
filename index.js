@@ -103,22 +103,51 @@ window.onload = function() {
     // getLocalStorage();
 
     const rows = document.querySelectorAll('.row');
+    const buttons = document.querySelectorAll('.btn');
     const capsLock = rows[2].children[0];
+    const shiftLeft = rows[3].children[0];
     capsLock.addEventListener('click', toggleCaps);
+    shiftLeft.addEventListener('dblclick', toggleShift);
     const letterButtons = document.querySelectorAll('.letter_btn');
 
     function toggleCaps (event) {
         capsLock.classList.toggle('selected');
-        if (event.getModifierState("CapsLock") || rows[2].children[0].classList.contains('selected')) {
+        if (event.getModifierState("CapsLock") || capsLock.classList.contains('selected')) {
             letterButtons.forEach(b => b.textContent = b.textContent.toUpperCase())
         } else {
             letterButtons.forEach(b => b.textContent = b.textContent.toLowerCase())
         }
     }
 
-    // function toggleShift (event) {
-
-    // }
+    function toggleShift (event) {
+        shiftLeft.classList.toggle('selected');
+        if ((event.getModifierState("ShiftLeft") || shiftLeft.classList.contains('selected')) && !capsLock.classList.contains('selected')) {
+            let i = 0;
+            buttons.forEach(b => {
+                b.textContent = `${keyboardArr[i][1].meaning[`${language}`][1]}`;
+                i++;
+                }
+            )
+        } else if ((event.getModifierState("ShiftLeft") || shiftLeft.classList.contains('selected')) && capsLock.classList.contains('selected')){
+            let i = 0;
+            buttons.forEach(b => {
+                b.textContent = `${keyboardArr[i][1].meaning[`${language}`][1]}`;
+                i++;
+                }
+            )
+            letterButtons.forEach(b => b.textContent = b.textContent.toLowerCase());
+        } else if ((!event.getModifierState("ShiftLeft") || !shiftLeft.classList.contains('selected')) && capsLock.classList.contains('selected')){
+            let i = 0;
+            buttons.forEach(b => {
+                b.textContent = `${keyboardArr[i][1].meaning[`${language}`][0]}`;
+                i++;
+                }
+            )
+            letterButtons.forEach(b => b.textContent = b.textContent.toUpperCase())
+        } else {
+            letterButtons.forEach(b => b.textContent = b.textContent.toLowerCase())
+        }
+    }
 
 
     // function getLocalStorage() {
