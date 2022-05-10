@@ -95,7 +95,7 @@ const keyboard = {
             EN: ['🠔', '🠔'],
             RU: ['🠔', '🠔'],
         },
-        activity: (value, position) => value.slice(0, position) + value.slice(position + 1),
+        activity: (value, position) => value.slice(0, position-1) + value.slice(position),
         row: '1',
     },
     Tab: {
@@ -202,7 +202,7 @@ const keyboard = {
             EN: ['Delete', 'Delete'],
             RU: ['Delete', 'Delete'],
         },
-        activity: (value, position) => (position + 1 ? value.slice(0, position + 1) + value.slice(position + 1 + 1) : value),
+        activity: (value, position) => (position + 1 ? value.slice(0, position) + value.slice(position + 1) : value),
         row: '2',
     },
     CapsLock: {
@@ -459,7 +459,7 @@ const keyboard = {
         EN: ['▶', '▶'],
         RU: ['▶', '▶'],
     },
-      activity: (value, position) => `${value.slice(0, position)}▶${value.slice(position + 1)}`,
+      activity: (value, position) => `${value.slice(0, position-1)}▶${value.slice(position)}`,
       row: '5',
     },
   };
