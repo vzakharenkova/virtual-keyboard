@@ -85,7 +85,7 @@ function drawKeyboardField(language = "EN") {
     const buttons = document.querySelectorAll('.btn');
     const letterButtons = document.querySelectorAll('.letter_btn');
     for (let i = 0; i < buttons.length; i++) {
-        buttons[i].insertAdjacentText('beforeend', `${keyboardArr[i][1].meaning[language][0]}`)
+        buttons[i].insertAdjacentText('beforeend', keyboardArr[i][1].meaning[language][0])
     }
 }
 
@@ -133,7 +133,7 @@ window.onload = function() {
             for (let i = 0; i < buttons.length; i++) {
                 buttons[i].textContent = `${keyboardArr[i][1].meaning[l][0]}`;
             }
-            localStorage.setItem('language') = l;
+            localStorage.setItem('language', l);
         }
 
         ctrlLeft.classList.toggle('selected');
