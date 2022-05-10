@@ -1,0 +1,124 @@
+
+#container {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 80vw;
+    font-family: 'Smooch Sans', sans-serif;
+    
+}
+
+
+#heading {
+    text-align: center;
+    font-family: 'Smooch Sans', sans-serif;
+    font-size: 30px;
+}
+
+
+#textarea {
+    display: block;
+    height: 15vh;
+    margin-bottom: 5vh;
+    -webkit-appearance: none;
+    resize: none;
+    outline: none;
+    border: 2px solid rgb(134, 149, 163);
+    border-radius: 20px;
+    background: linear-gradient(rgba(27, 141, 255, 0.621), rgba(138, 180, 222, 0.467));
+    padding: 2vh;
+    font-size: 20px;
+}
+
+
+#keyboard_container {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid rgb(134, 149, 163);
+    border-radius: 20px;
+    height: 50vh;
+    margin-bottom: 5vh;
+    padding: 2vh;
+    background-color: rgba(138, 180, 222, 0.467);
+    font-weight: 900;
+    font-size: 20px;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+    height: 8vh;
+}
+
+
+#keyboard_arrows {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 25vh;
+}
+.btn.arrow_btn {
+    width: 7vh;
+    line-height: 3.6vh;
+    height: 3.6vh;
+}
+.btn.arrow_btn:first-child {
+    margin-right: 9vh;
+    margin-left: 9vh;
+}
+
+
+.btn {
+    border: 1px solid rgb(134, 149, 163);
+    background-color: rgb(27, 141, 255);
+    width: 9vh;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 8vh;
+    cursor: pointer;
+}
+.row:first-child .activity_btn{
+    width: 25.5vh;
+}
+.row:nth-child(2n) .activity_btn:first-child,.row:nth-child(2n) .activity_btn:last-child {
+    width: 15vh;
+}
+.row:nth-child(3n) .activity_btn:first-child,.row:nth-child(3n) .activity_btn:last-child {
+    width: 25vh;
+}
+.row:nth-child(4n) .activity_btn:first-child,.row:nth-child(4n) .activity_btn:last-child {
+    width: 30vh;
+}
+.row:last-child .activity_btn:nth-child(4n) {
+    width: 87vh;
+}
+
+.btn:focus {
+    background-color: rgb(14, 93, 173);
+}
+
+.btn:hover {
+    background-color: rgb(103, 166, 229);
+}
+
+.btn.activity_btn.selected {
+    background-color:rgb(10, 69, 128);
+    color: rgb(159, 186, 212);
+}
+
+.btn.selected {
+    background-color:rgb(10, 69, 128);
+    color: rgb(159, 186, 212);
+}
+
+
+#additional_info {
+    text-align: center;
+    font-size: 15px;
+    font-weight: 600;
+}
