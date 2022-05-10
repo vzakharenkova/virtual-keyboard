@@ -4,9 +4,11 @@ let keyboardValues = Object.values(keyboard);
 let lang = ['EN', 'RU'];
 console.log(keyboardArr)
 
+
 function setLocalStorage() {
+    const language  = localStorage.getItem('language') || 'EN';
     localStorage.setItem('language', language);
-}
+    }
 
 window.addEventListener('beforeunload', setLocalStorage);
 
@@ -123,7 +125,7 @@ window.onload = function() {
 
     function toggleLanguage() {
         let l;
-        if (localStorage.language === lang[0]) {
+        if (localStorage.getItem('language') === lang[0]) {
             l = lang[1]
         } else l = lang[0];
         ctrlLeft.classList.toggle('selected');
@@ -131,7 +133,7 @@ window.onload = function() {
             for (let i = 0; i < buttons.length; i++) {
                 buttons[i].textContent = `${keyboardArr[i][1].meaning[l][0]}`;
             }
-            localStorage.language = l;
+            localStorage.setItem('language') = l;
         }
 
         ctrlLeft.classList.toggle('selected');
