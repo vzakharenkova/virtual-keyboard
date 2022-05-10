@@ -88,7 +88,7 @@ function drawKeyboardField(language = "EN") {
 }
 
 window.onload = function() {
-    drawKeyboardField(localStorage.getItem('language'));
+    drawKeyboardField(localStorage.getItem('language') || "EN");
 
     const rows = document.querySelectorAll('.row');
     const buttons = document.querySelectorAll('.btn');
