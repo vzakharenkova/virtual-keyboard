@@ -1,22 +1,16 @@
 import keyboard from './keyboard.js';
 let keyboardArr = Object.entries(keyboard);
 let keyboardValues = Object.values(keyboard);
-let language = "EN";
-
-
+let lang = ['EN', 'RU'];
+console.log(keyboardArr)
 
 function setLocalStorage() {
     localStorage.setItem('language', language);
 }
+
 window.addEventListener('beforeunload', setLocalStorage);
 
-
-function drawKeyboardField() {
-    let language = 'EN';
-    if (localStorage.language) {
-        language = localStorage.language;
-    }
-    
+function drawKeyboardField(language = "EN") {
     const body = document.querySelector('body');
     body.insertAdjacentHTML('afterbegin', '<div id="container"></div>');
 
@@ -24,7 +18,7 @@ function drawKeyboardField() {
     container.insertAdjacentHTML('beforeend', '<h1 id="heading">Виртуальная клавиатура</h1>');
     container.insertAdjacentHTML('beforeend', '<textarea id="textarea" autofocus/>');
     container.insertAdjacentHTML('beforeend', '<div id="keyboard_container"></div>');
-    container.insertAdjacentHTML('beforeend', '<div id="additional_info"><div>Клавиатура создана в операционной системе Windows<div/><div>Для переключения языка комбинация: левые ctrl + shift<div/></div>');
+    container.insertAdjacentHTML('beforeend', '<div id="additional_info"><div>Клавиатура создана в операционной системе Windows<div/><div>Для переключения языка комбинация: левые shift (двойной клик) + ctrl<div/></div>');
 
     const keyboardContainer = document.querySelector('#keyboard_container');
     let rowsAmount = 5;
@@ -88,22 +82,13 @@ function drawKeyboardField() {
     }
     const buttons = document.querySelectorAll('.btn');
     const letterButtons = document.querySelectorAll('.letter_btn');
-    console.log(letterButtons)
     for (let i = 0; i < buttons.length; i++) {
-        buttons[i].insertAdjacentText('beforeend', `${keyboardArr[i][1].meaning[`${language}`][0]}`)
+        buttons[i].insertAdjacentText('beforeend', `${keyboardArr[i][1].meaning[language][0]}`)
     }
 }
 
-
-
-
-
-
-
 window.onload = function() {
-    getLocalStorage();
-    drawKeyboardField();
-    
+    drawKeyboardField(localStorage.getItem('language'));
 
     const rows = document.querySelectorAll('.row');
     const buttons = document.querySelectorAll('.btn');
@@ -123,26 +108,32 @@ window.onload = function() {
     digitButtons.forEach(btn => btn.addEventListener('click', writeInTextarea));
     symbolButtons.forEach(btn => btn.addEventListener('click', writeInTextarea));
     textarea.addEventListener('input', function updateValue(e) {
-        textarea.textContent = e.target.value;
+        textarea.value = e.target.value;
     })
+    textarea.addEventListener('keydown', f);
     activityButtons.forEach(btn => btn.addEventListener('click', activityInTextarea));
     arrowButtons.forEach(btn => btn.addEventListener('click', activityInTextarea));
-
-    
+    document.addEventListener('keydown', e => {
+        if(document.activeElement !== textarea) {
+            const end = textarea.value.length;
+            textarea.setSelectionRange(end, end);
+            textarea.focus();
+        }
+    })
 
     function toggleLanguage() {
+        let l;
+        if (localStorage.language === lang[0]) {
+            l = lang[1]
+        } else l = lang[0];
         ctrlLeft.classList.toggle('selected');
-        if (language === 'EN') {
-            language = 'RU';
-        } else language = 'EN';
         if (shiftLeft.classList.contains('selected')) {
             for (let i = 0; i < buttons.length; i++) {
-                buttons[i].textContent = `${keyboardArr[i][1].meaning[`${language}`][0]}`;
+                buttons[i].textContent = `${keyboardArr[i][1].meaning[l][0]}`;
             }
-    
+            localStorage.language = l;
         }
- 
-        
+
         ctrlLeft.classList.toggle('selected');
         shiftLeft.classList.toggle('selected');
     }
@@ -166,14 +157,14 @@ window.onload = function() {
         if ((event.getModifierState("ShiftLeft") || shiftLeft.classList.contains('selected')) && !capsLock.classList.contains('selected')) {
             let i = 0;
             buttons.forEach(b => {
-                b.textContent = `${keyboardArr[i][1].meaning[`${language}`][1]}`;
+                b.textContent = `${keyboardArr[i][1].meaning[localStorage.language][1]}`;
                 i++;
                 }
             )
         } else if ((event.getModifierState("ShiftLeft") || shiftLeft.classList.contains('selected')) && capsLock.classList.contains('selected')){
             let i = 0;
             buttons.forEach(b => {
-                b.textContent = `${keyboardArr[i][1].meaning[`${language}`][1]}`;
+                b.textContent = `${keyboardArr[i][1].meaning[localStorage.language][1]}`;
                 i++;
                 }
             )
@@ -181,7 +172,7 @@ window.onload = function() {
         } else if ((!event.getModifierState("ShiftLeft") || !shiftLeft.classList.contains('selected')) && capsLock.classList.contains('selected')){
             let i = 0;
             buttons.forEach(b => {
-                b.textContent = `${keyboardArr[i][1].meaning[`${language}`][0]}`;
+                b.textContent = `${keyboardArr[i][1].meaning[localStorage.language][0]}`;
                 i++;
                 }
             )
@@ -192,29 +183,45 @@ window.onload = function() {
     }
 
     function writeInTextarea(e) {
-        textarea.textContent += e.target.textContent;
+        e.target.classList.toggle('selected');
+        const text = textarea.value;
+        const cursorPosition = textarea.selectionStart;
+        textarea.value = text.substring(0, cursorPosition) + e.target.textContent + text.substring(cursorPosition, text.length);
+        textarea.setSelectionRange(cursorPosition, cursorPosition);
+        textarea.focus();
+        textarea.selectionStart = cursorPosition + 1;
+        setTimeout(() => e.target.classList.toggle('selected'), 300)
     }
 
     function activityInTextarea(e) {
+        const text = textarea.value;
+        const cursorPosition = textarea.selectionStart;
+        e.target.classList.toggle('selected');
+        
         let n = 0;
         for (let i = 0; i < buttons.length; i++) {
             if (buttons[i].outerHTML == e.target.outerHTML) {
                 n = i;
-                console.log(e.target);
-                textarea.textContent = keyboardValues[i].activity(textarea.textContent, Selection.selectionStart - 1);
+                textarea.value = keyboardValues[i].activity(textarea.value, cursorPosition);
                 break; 
             }
              
         }
-        let value = textarea.textContent;
-        let position = textarea.textContent.length-1;
-        textarea.textContent = keyboardValues[n].activity(value, position);
-        
-
+        textarea.setSelectionRange(cursorPosition, cursorPosition);
+        textarea.focus();
+        textarea.selectionStart = cursorPosition;
+        setTimeout(() => e.target.classList.toggle('selected'), 300)
     }
 
-    function getLocalStorage() {
-        localStorage.getItem('language');
-        language = localStorage.language;
-    } 
+    function f(e) {
+        let n;
+        for (let i = 0; i < keyboardArr.length; i++) {
+            if (keyboardArr[i][0] == `${e.code}`) {
+                n = i;
+                break;
+            }
+        }
+        buttons[n].classList.toggle('selected');
+        setTimeout(() => buttons[n].classList.toggle('selected'), 300)
+    }
 }

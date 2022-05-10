@@ -111,6 +111,11 @@
     color: rgb(159, 186, 212);
 }
 
+.btn.selected {
+    background-color:rgb(10, 69, 128);
+    color: rgb(159, 186, 212);
+}
+
 
 #additional_info {
     text-align: center;
